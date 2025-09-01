@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=3 uid="uid://blyjiibal0cld"]
+
+[ext_resource type="Script" uid="uid://c32k08s4hvcek" path="res://addons/diablo_particles/inspector_plugin/diablo_texture_preview.gd" id="1_ee7ep"]
+[ext_resource type="Shader" uid="uid://d4decg7cm0f2l" path="res://addons/diablo_particles/inspector_plugin/diablo_inspector_rgb.gdshader" id="2_5530n"]
+[ext_resource type="Texture2D" uid="uid://bgj3q4td2172n" path="res://addons/diablo_particles/diablo_icon.png" id="3_se2h5"]
+[ext_resource type="Shader" uid="uid://cpswuan8sttf1" path="res://addons/diablo_particles/inspector_plugin/diablo_inspector_alpha.gdshader" id="4_4ufhv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ad73o"]
+shader = ExtResource("2_5530n")
+shader_parameter/scale = 0.0
+shader_parameter/speed = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ycl3d"]
+shader = ExtResource("4_4ufhv")
+shader_parameter/scale = 0.0
+shader_parameter/speed = Vector2(0, 0)
+
+[node name="TexturePreview" type="Control"]
+custom_minimum_size = Vector2(256, 128)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_ee7ep")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -260.0
+offset_bottom = 128.0
+grow_horizontal = 0
+
+[node name="RGB" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ad73o")
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("3_se2h5")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/RGB"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = -14.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 10
+text = "RGB"
+horizontal_alignment = 2
+
+[node name="A" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ycl3d")
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("3_se2h5")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/A"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = -14.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 10
+text = "A"
+horizontal_alignment = 2
